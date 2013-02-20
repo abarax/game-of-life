@@ -80,8 +80,7 @@ class World {
       for (int j = 0; j < this.rows; j++) {
         
         liveNeighbourCount = this.getLiveNeighbourCount( i, j);
-       //String a = "i is" + i + " j is " + j + " live count is " +  liveNeighbourCount;
-       // println(a);
+       
         // Check status based on 4 rules:
         // 1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
         if (liveNeighbourCount < 2)
@@ -108,34 +107,31 @@ class World {
     int count = 0;
     
     //North-West
-    if (row != 0 && col != 0 && map[col-1][row-1].isAlive == true)
+    if (row != 0 && col != 0 && map[col-1][row-1].isAlive)
       count++;
     //North
-    if (row != 0 && map[col][row-1].isAlive == true)
+    if (row != 0 && map[col][row-1].isAlive)
       count++;
     //North-East
-    if (row != 0 && col != (this.cols - 1) && map[col+1][row-1].isAlive == true)
+    if (row != 0 && col != (this.cols - 1) && map[col+1][row-1].isAlive)
       count++;
     //East
-    if (col != (this.cols - 1) && map[col+1][row].isAlive == true)
+    if (col != (this.cols - 1) && map[col+1][row].isAlive)
       count++;
     //South-East
-    if (row != (this.rows - 1) && col != (this.cols - 1) && map[col+1][row+1].isAlive == true)
+    if (row != (this.rows - 1) && col != (this.cols - 1) && map[col+1][row+1].isAlive)
       count++;
     //South
-    if (row != (this.rows - 1) && map[col][row+1].isAlive == true)
+    if (row != (this.rows - 1) && map[col][row+1].isAlive)
       count++;
     //South-West
-    if (row != (this.rows -1) && col != 0 && map[col-1][row+1].isAlive == true)
+    if (row != (this.rows -1) && col != 0 && map[col-1][row+1].isAlive)
       count++;
     //West 
-    if (col != 0 && map[col-1][row].isAlive == true)
+    if (col != 0 && map[col-1][row].isAlive)
       count++;
-   if(count > 0)
-     println(count);
-    return count; 
-    
-    
+  
+    return count;   
   }
     
   // A Cell object
