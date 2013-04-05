@@ -17,20 +17,20 @@ void draw() {
 class World {
   
   int rows;
-  int cols;
+  int columns;
   
   Cell[][] map;
   
-  World(int tempRows, int tempCols) {
-    this.rows = tempRows;
-    this.cols = tempCols;
+  World(int rows, int columns) {
+    this.rows = rows;
+    this.columns = columns;
     
-    this.map = new Cell[this.cols][this.rows];
+    this.map = new Cell[this.columns][this.rows];
   }
   
-  void initialize() {
+  void initialise() {
     boolean isAlive = false;
-    for (int i = 0; i < this.cols; i++) {
+    for (int i = 0; i < this.columns; i++) {
       for (int j = 0; j < this.rows; j++) {
         // Initialize each object
         isAlive = int(random(2)) == 1 ? true : false;
@@ -39,9 +39,9 @@ class World {
     }
   }
   
-  void initializeSpecific() {
+  void initialiseSpecific() {
 
-    for (int i = 0; i < this.cols; i++) {
+    for (int i = 0; i < this.columns; i++) {
       for (int j = 0; j < this.rows; j++) {
         // Initialize each object
         map[i][j] = new Cell(i*10, j*10, 10, 10, false);
@@ -135,15 +135,15 @@ class World {
   class Cell {
     
     float x,y; // x,y location
-    float w,h; // width and height
+    float width, height; 
     boolean isAlive; // is this organism alive
 
-    Cell(float tempX, float tempY, float tempW, float tempH, boolean tempIsAlive) {
-      x = tempX;
-      y = tempY;
-      w = tempW;
-      h = tempH;
-      isAlive = tempIsAlive;
+    Cell(float x, float y, float width, float height, boolean isAlive) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.isAlive = isAlive;
     }
   
     void display() {
