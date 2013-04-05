@@ -47,18 +47,7 @@ class World {
         map[i][j] = new Cell(i*10, j*10, 10, 10, false);
       }
     }
-    
-    
-   /* map[10][11].isAlive = true;
-    map[10][12].isAlive = true;
-    map[11][11].isAlive = true;
-    
-    
-    
-    map[12][14].isAlive = true;
-    map[13][13].isAlive = true;
-    map[13][14].isAlive = true;*/
-    
+        
     map[13][13].isAlive = true;
     map[13][14].isAlive = true;
     map[13][15].isAlive = true;
@@ -74,13 +63,13 @@ class World {
   }
   
   void updateState() {
-    Cell [][] tempMap = new Cell[this.cols][this.rows];
+    Cell [][] nextMapState = new Cell[this.cols][this.rows];
 
     for (int i = 0; i < this.cols; i++) {
       for (int j = 0; j < this.rows; j++) {
         // Initialize each object
         
-        tempMap[i][j] = new Cell(i*10, j*10, 10, 10, false);
+        nextMapState[i][j] = new Cell(i*10, j*10, 10, 10, false);
       }
     }
     
@@ -93,21 +82,21 @@ class World {
         // Check status based on 4 rules:
         // 1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
         if (liveNeighbourCount < 2) {
-          tempMap[i][j].isAlive = false;
+          nextMapState[i][j].isAlive = false;
         // 2. Any live cell with two or three live neighbours lives on to the next generation.
         }else if (map[i][j].isAlive == true && (liveNeighbourCount == 2 || liveNeighbourCount == 3)){
-          tempMap[i][j].isAlive = true;}
+          nextMapState[i][j].isAlive = true;}
         // 3. Any live cell with more than three live neighbours dies, as if by overcrowding.
         else if (map[i][j].isAlive == true && liveNeighbourCount > 3){
-          tempMap[i][j].isAlive = false;}
+          nextMapState[i][j].isAlive = false;}
         // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         else if (map[i][j].isAlive == false && liveNeighbourCount == 3){
-          tempMap[i][j].isAlive = true;}
+          nextMapState[i][j].isAlive = true;}
   
       }
     }
     
-    this.map = tempMap;
+    this.map = nextMapState;
  
   }
   
