@@ -132,14 +132,12 @@ class World {
     return count;
   }
     
-  // A Cell object
   class Cell {
-    // A cell object knows about its location in the grid as well as its size with the variables x,y,w,h.
+    
     float x,y; // x,y location
     float w,h; // width and height
     boolean isAlive; // is this organism alive
-  
-    // Cell Constructor
+
     Cell(float tempX, float tempY, float tempW, float tempH, boolean tempIsAlive) {
       x = tempX;
       y = tempY;
@@ -149,8 +147,9 @@ class World {
     }
   
     void display() {
+
+      // Color the cells black if alive or white if dead.
       stroke(255);
-      // Color calculated using sine wave
       
       if(this.isAlive)
         fill(0);
