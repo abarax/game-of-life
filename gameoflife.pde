@@ -55,7 +55,7 @@ class World {
   }
   
   void draw() {
-    for (int i = 0; i < this.cols; i++) {
+    for (int i = 0; i < this.columns; i++) {
       for (int j = 0; j < this.rows; j++) {
         map[i][j].display();
       }
@@ -63,18 +63,17 @@ class World {
   }
   
   void updateState() {
-    Cell [][] nextMapState = new Cell[this.cols][this.rows];
+    Cell [][] nextMapState = new Cell[this.columns][this.rows];
 
-    for (int i = 0; i < this.cols; i++) {
+    for (int i = 0; i < this.columns; i++) {
       for (int j = 0; j < this.rows; j++) {
-        // Initialize each object
-        
+        // Initialize each object        
         nextMapState[i][j] = new Cell(i*10, j*10, 10, 10, false);
       }
     }
     
     int liveNeighbourCount = 0;
-    for (int i = 0; i < this.cols; i++) {
+    for (int i = 0; i < this.columns; i++) {
       for (int j = 0; j < this.rows; j++) {
         
         liveNeighbourCount = this.getLiveNeighbourCount( i, j);
@@ -111,13 +110,13 @@ class World {
     if (row != 0 && this.map[col][row-1].isAlive)
       count++;
     //North-East
-    if (row != 0 && col != (this.cols - 1) && this.map[col+1][row-1].isAlive)
+    if (row != 0 && col != (this.columns - 1) && this.map[col+1][row-1].isAlive)
       count++;
     //East
-    if (col != (this.cols - 1) && this.map[col+1][row].isAlive)
+    if (col != (this.columns - 1) && this.map[col+1][row].isAlive)
       count++;
     //South-East
-    if (row != (this.rows - 1) && col != (this.cols - 1) && this.map[col+1][row+1].isAlive)
+    if (row != (this.rows - 1) && col != (this.columns - 1) && this.map[col+1][row+1].isAlive)
       count++;
     //South
     if (row != (this.rows - 1) && this.map[col][row+1].isAlive)
